@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import PlayerHeader from "./components/PlayerHeader";
+import PlayerSheet from "./components/PlayerSheet";
+import React from "react";
+import "./App.css";
+import { Button, Grid } from "@mui/material";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grid container direction="column">
+      <Grid item sx={{ backgroundColor: "#101010" }}>
+        <PlayerHeader
+          name="Noogal Vindspinnare"
+          image="https://assets.dicebreaker.com/0-dungeons-and-dragons-wizard-5e-guide.png/BROK/thumbnail/1200x1200/quality/100/0-dungeons-and-dragons-wizard-5e-guide.png"
+        />
+      </Grid>
+      <Grid item container>
+        <Grid item xs={0} sm={1} sx={{}} />
+        <Grid item xs={12} sm={10} sx={{}}>
+          <PlayerSheet />
+          {/* <img src="https://www.tribality.com/wp-content/uploads/2019/07/andreas-rocha-fieldsofgold011-750x375.jpg" height="100%"/> */}
+          {/* <div className="sheet borderdebug">
+            <img src="https://www.tribality.com/wp-content/uploads/2019/07/andreas-rocha-fieldsofgold011-750x375.jpg"/>
+            <PlayerSheet />
+          </div> */}
+        </Grid>
+        <Grid item xs={0} sm={1} sx={{}} />
+      </Grid>
+    </Grid>
   );
 }
-
-export default App;
