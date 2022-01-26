@@ -1,4 +1,4 @@
-# A web visualization of the Swedish 1980s RPG "Drakar och Demoner Export"
+# A web visualization of a character sheet for the Swedish 1980s RPG "Drakar och Demoner Export"
 
 # Why
 
