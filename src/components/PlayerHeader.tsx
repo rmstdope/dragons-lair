@@ -5,8 +5,6 @@ interface Properties {
   image: string;
   name: string;
 }
-function pcClicked() {}
-
 export default class PlayerHeader extends React.Component<Properties> {
   render() {
     return (

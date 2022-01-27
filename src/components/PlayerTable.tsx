@@ -14,7 +14,8 @@ const PlayerTableCell = styled(
   {}
 )({
   fontSize: 12,
-  padding: "4px 10px 4px 10px",
+  padding: "2px 6px 2px 6px",
+  //border: "1px solid #909090",
 });
 
 const PlayerTableHeaderCell = styled(
@@ -33,20 +34,15 @@ const PlayerTableContainer = styled(
   border: "2px solid #909090",
   backgroundColor: "#505060",
   opacity: 0.5,
-  width: "max-content",
+  width: "90%",
 });
-
-interface RowData {
-  name: string;
-  value1: number;
-  value2: number;
-}
 
 interface PlayerTableProps {
   row1: string;
-  row2: string;
-  row3: string;
-  Data: RowData[];
+  row2?: string;
+  row3?: string;
+  row4?: string;
+  Data: string[][];
 }
 
 export default class PlayerTable extends React.Component<PlayerTableProps> {
@@ -57,23 +53,51 @@ export default class PlayerTable extends React.Component<PlayerTableProps> {
           <TableHead>
             <TableRow>
               <PlayerTableHeaderCell> {this.props.row1}</PlayerTableHeaderCell>
-              <PlayerTableHeaderCell align="center">
-                {this.props.row2}
-              </PlayerTableHeaderCell>
-              <PlayerTableHeaderCell align="center">
-                {this.props.row3}
-              </PlayerTableHeaderCell>
+              {this.props.row2 != null ? (
+                <PlayerTableHeaderCell align="center">
+                  {this.props.row2}
+                </PlayerTableHeaderCell>
+              ) : (
+                ""
+              )}
+              {this.props.row3 != null ? (
+                <PlayerTableHeaderCell align="center">
+                  {this.props.row3}
+                </PlayerTableHeaderCell>
+              ) : (
+                ""
+              )}
+              {this.props.row4 != null ? (
+                <PlayerTableHeaderCell align="center">
+                  {this.props.row4}
+                </PlayerTableHeaderCell>
+              ) : (
+                ""
+              )}
             </TableRow>
           </TableHead>
           <TableBody>
             {this.props.Data.map((row) => (
               <TableRow
-                key={row.name}
+                key={row[0]}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <PlayerTableCell>{row.name}</PlayerTableCell>
-                <PlayerTableCell align="center">{row.value1}</PlayerTableCell>
-                <PlayerTableCell align="center">{row.value2}</PlayerTableCell>
+                <PlayerTableCell>{row[0]}</PlayerTableCell>
+                {this.props.row2 != null ? (
+                  <PlayerTableCell align="center">{row[1]}</PlayerTableCell>
+                ) : (
+                  ""
+                )}
+                {this.props.row3 != null ? (
+                  <PlayerTableCell align="center">{row[2]}</PlayerTableCell>
+                ) : (
+                  ""
+                )}
+                {this.props.row4 != null ? (
+                  <PlayerTableCell align="center">{row[3]}</PlayerTableCell>
+                ) : (
+                  ""
+                )}
               </TableRow>
             ))}
           </TableBody>

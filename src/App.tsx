@@ -1,8 +1,7 @@
 import PlayerHeader from "./components/PlayerHeader";
 import PlayerSheet from "./components/PlayerSheet";
-import React from "react";
 import "./App.css";
-import { Button, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 
 export default function App() {
   return (
