@@ -14,7 +14,9 @@ const PlayerTableCell = styled(
   {}
 )({
   fontSize: 12,
-  padding: "2px 6px 2px 6px",
+  padding: "1px 6px 1px 6px",
+  borderBottom: "1px solid #808080",
+  verticalAlign: "top",
   //border: "1px solid #909090",
 });
 
@@ -38,68 +40,44 @@ const PlayerTableContainer = styled(
 });
 
 interface PlayerTableProps {
-  row1: string;
-  row2?: string;
-  row3?: string;
-  row4?: string;
   Data: string[][];
 }
 
-export default class PlayerTable extends React.Component<PlayerTableProps> {
+export class PlayerTable extends React.Component<PlayerTableProps> {
   render() {
     return (
       <PlayerTableContainer>
         <Table size="small" aria-label="Attributes">
           <TableHead>
             <TableRow>
-              <PlayerTableHeaderCell> {this.props.row1}</PlayerTableHeaderCell>
-              {this.props.row2 != null ? (
-                <PlayerTableHeaderCell align="center">
-                  {this.props.row2}
-                </PlayerTableHeaderCell>
-              ) : (
-                ""
-              )}
-              {this.props.row3 != null ? (
-                <PlayerTableHeaderCell align="center">
-                  {this.props.row3}
-                </PlayerTableHeaderCell>
-              ) : (
-                ""
-              )}
-              {this.props.row4 != null ? (
-                <PlayerTableHeaderCell align="center">
-                  {this.props.row4}
-                </PlayerTableHeaderCell>
-              ) : (
-                ""
-              )}
+              {this.props.Data[0].map((item, index) => {
+                return index === 0 ? (
+                  <PlayerTableHeaderCell>{item}</PlayerTableHeaderCell>
+                ) : (
+                  <PlayerTableHeaderCell align="center">
+                    {item}
+                  </PlayerTableHeaderCell>
+                );
+              })}
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.props.Data.map((row) => (
-              <TableRow
-                key={row[0]}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <PlayerTableCell>{row[0]}</PlayerTableCell>
-                {this.props.row2 != null ? (
-                  <PlayerTableCell align="center">{row[1]}</PlayerTableCell>
-                ) : (
-                  ""
-                )}
-                {this.props.row3 != null ? (
-                  <PlayerTableCell align="center">{row[2]}</PlayerTableCell>
-                ) : (
-                  ""
-                )}
-                {this.props.row4 != null ? (
-                  <PlayerTableCell align="center">{row[3]}</PlayerTableCell>
-                ) : (
-                  ""
-                )}
-              </TableRow>
-            ))}
+            {this.props.Data.slice(1).map((row) => {
+              return (
+                <TableRow
+                  key={row[0]}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  {row.map((value, index) => {
+                    return index === 0 ? (
+                      <PlayerTableCell>{value}</PlayerTableCell>
+                    ) : (
+                      <PlayerTableCell align="center">{value}</PlayerTableCell>
+                    );
+                  })}
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </PlayerTableContainer>

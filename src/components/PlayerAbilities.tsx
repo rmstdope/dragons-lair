@@ -1,10 +1,10 @@
 import * as React from "react";
-import PlayerTable from "./PlayerTable";
+import { PlayerTable } from "./PlayerTable";
 
-const data = [["Stålnäve"], ["Allkännare"]];
+const data = [["Hjälteförmågor"], ["Stålnäve"], ["Allkännare"]];
 
 export default class PlayerSkills extends React.Component {
   render() {
-    return <PlayerTable row1="Hjälteförmågor" Data={data}></PlayerTable>;
+    return <PlayerTable Data={data}></PlayerTable>;
   }
 }

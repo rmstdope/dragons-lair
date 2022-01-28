@@ -2,12 +2,13 @@ import * as React from "react";
 import { PlayerTable } from "./PlayerTable";
 
 const data = [
-  ["Färdighet", "FV", "ERf"],
-  ["Klättra", "15", "0"],
-  ["Simma", "10", "0"],
+  ["Utrustning", "BEP"],
+  ["Grunka", "20"],
+  ["Pryttel", "4"],
+  ["Atteralj", "3"],
 ];
 
-export default class PlayerSkills extends React.Component {
+export default class PlayerEquipment extends React.Component {
   render() {
     return <PlayerTable Data={data}></PlayerTable>;
   }
