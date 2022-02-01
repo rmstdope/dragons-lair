@@ -1,0 +1,91 @@
+# Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
+
+# This "Book" type defines the queryable fields for every book in our data source.
+type PlayerCharacter {
+  id: ID!
+  name: String!
+  race: String!
+  gender: String!
+  age: Int!
+  strength: Int!
+  physique: Int!
+  size: Int!
+  agility: Int!
+  intelligence: Int!
+  phsycicPower: Int!
+  charisma: Int!
+  bonusExperience: Int!
+  heroPoints: Int!
+  swordHand: String!
+  movement: String!
+  socialPosition: String!
+  homeTown: String!
+  currentPsy: Int!
+  currentHp: Int!
+  goldCarried: Int!
+  goldInStorage: Int!
+  silverCarried: Int!
+  silverInStorage: Int!
+  copperCarried: Int!
+  copperInStorage: Int!
+  lifeGoals: String!
+  appearance: String!
+  magicSchools: [MagicSchool!]
+  spells: [Spell!]
+  skills: [Skill!]!
+  languages: [Language!]
+  heroAbilities: [HeroAbility!]
+  equipment: [Equipment!]
+  weapons: [Weapon!]
+}
+
+type MagicSchool {
+  name: String!
+  skillLevel: Int!
+  experience: Int!
+}
+
+type Spell {
+  name: String!
+  skillLevel: Int!
+  experience: Int!
+}
+
+type Skill {
+  name: String!
+  skillLevel: Int!
+  experience: Int!
+}
+
+type Language {
+  name: String!
+  speak: Int!
+  readWrite: Int!
+  experience: Int!
+}
+
+type HeroAbility {
+  name: String!
+}
+
+type Equipment {
+  name: String!
+  weight: Int!
+}
+
+type Weapon {
+  name: String!
+  damage: String!
+  breakValue: Int!
+  length: Int!
+  range: Int!
+  weight: Int!
+}
+
+# The "Query" type is special: it lists all of the available queries that
+# clients can execute, along with the return type for each. In this
+# case, the "books" query returns an array of zero or more Books (defined above).
+type Query {
+  characters: [PlayerCharacter!]
+  character(id: Int!): PlayerCharacter
+}

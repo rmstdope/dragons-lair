@@ -1,0 +1,172 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../data/dragons-lair.db"
+}
+
+model PlayerCharacter {
+  id              Int                    @id @default(autoincrement())
+  name            String
+  race            String
+  gender          String
+  age             Int
+  strength        Int
+  physique        Int
+  size            Int
+  agility         Int
+  intelligence    Int
+  phsycicPower    Int
+  charisma        Int
+  bonusExperience Int
+  heroPoints      Int
+  swordHand       String
+  movement        String
+  socialPosition  String
+  homeTown        String
+  currentPsy      Int
+  currentHp       Int
+  goldCarried     Int
+  goldInStorage   Int
+  silverCarried   Int
+  silverInStorage Int
+  copperCarried   Int
+  copperInStorage Int
+  lifeGoals       String
+  appearance      String
+  magicSchools    CharacterMagicSchool[]
+  spells          CharacterSpell[]
+  skills          CharacterSkill[]
+  languages       CharacterLanguage[]
+  heroAbilities   CharacterHeroAbility[]
+  equipment       CharacterEquipment[]
+  weapons         CharacterWeapon[]
+}
+
+model MagicSchool {
+  id                    Int                    @id @default(autoincrement())
+  name                  String                 @unique
+  characterMagicSchools CharacterMagicSchool[]
+  spells                Spell[]
+}
+
+model Spell {
+  id              Int              @id @default(autoincrement())
+  name            String           @unique
+  magicSchool     MagicSchool      @relation(fields: [magicSchoolId], references: [id])
+  magicSchoolId   Int
+  characterSpells CharacterSpell[]
+}
+
+model Skill {
+  id              Int              @id @default(autoincrement())
+  name            String           @unique
+  characterSkills CharacterSkill[]
+}
+
+model Language {
+  id                 Int                 @id @default(autoincrement())
+  name               String              @unique
+  characterLanguages CharacterLanguage[]
+}
+
+model HeroAbility {
+  id                     Int                    @id @default(autoincrement())
+  name                   String                 @unique
+  characterHeroAbilities CharacterHeroAbility[]
+}
+
+model Equipment {
+  id                 Int                  @id @default(autoincrement())
+  name               String               @unique
+  weight             Int
+  characterEquipment CharacterEquipment[]
+}
+
+model Weapon {
+  id              Int               @id @default(autoincrement())
+  name            String            @unique
+  damage          String
+  breakValue      Int
+  length          Int
+  range           Int
+  weight          Int
+  characterWeapon CharacterWeapon[]
+}
+
+model CharacterMagicSchool {
+  character     PlayerCharacter @relation(fields: [characterId], references: [id])
+  characterId   Int
+  magicSchool   MagicSchool     @relation(fields: [magicSchoolId], references: [id])
+  magicSchoolId Int
+  skillLevel    Int
+  experience    Int             @default(0)
+
+  @@id([characterId, magicSchoolId])
+}
+
+model CharacterSpell {
+  character   PlayerCharacter @relation(fields: [characterId], references: [id])
+  characterId Int
+  spell       Spell           @relation(fields: [spellId], references: [id])
+  spellId     Int
+  skillLevel  Int
+  experience  Int             @default(0)
+
+  @@id([characterId, spellId])
+}
+
+model CharacterSkill {
+  character   PlayerCharacter @relation(fields: [characterId], references: [id])
+  characterId Int
+  skill       Skill           @relation(fields: [skillId], references: [id])
+  skillId     Int
+  skillLevel  Int
+  experience  Int             @default(0)
+
+  @@id([characterId, skillId])
+}
+
+model CharacterLanguage {
+  character   PlayerCharacter @relation(fields: [characterId], references: [id])
+  characterId Int
+  language    Language        @relation(fields: [languageId], references: [id])
+  languageId  Int
+  speak       Int
+  readWrite   Int
+  experience  Int             @default(0)
+
+  @@id([characterId, languageId])
+}
+
+model CharacterHeroAbility {
+  character     PlayerCharacter @relation(fields: [characterId], references: [id])
+  characterId   Int
+  heroAbility   HeroAbility     @relation(fields: [heroAbilityId], references: [id])
+  heroAbilityId Int
+
+  @@id([characterId, heroAbilityId])
+}
+
+model CharacterEquipment {
+  character   PlayerCharacter @relation(fields: [characterId], references: [id])
+  characterId Int
+  equipment   Equipment       @relation(fields: [equipmentId], references: [id])
+  equipmentId Int
+
+  @@id([characterId, equipmentId])
+}
+
+model CharacterWeapon {
+  character   PlayerCharacter @relation(fields: [characterId], references: [id])
+  characterId Int
+  weapon      Weapon          @relation(fields: [weaponId], references: [id])
+  weaponId    Int
+
+  @@id([characterId, weaponId])
+}
