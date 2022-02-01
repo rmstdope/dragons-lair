@@ -16,6 +16,7 @@ const serverResolvers = {
           heroAbilities: { include: { heroAbility: true } },
           equipment: { include: { equipment: true } },
           weapons: { include: { weapon: true } },
+          shields: { include: { shield: true } },
         },
       }),
   },
@@ -40,6 +41,9 @@ const serverResolvers = {
     },
     weapons: (parent) => {
       return parent.weapons;
+    },
+    shields: (parent) => {
+      return parent.shields;
     },
   },
   MagicSchool: {
@@ -93,6 +97,17 @@ const serverResolvers = {
     },
     weight: (parent) => {
       return parent.weapon.weight;
+    },
+  },
+  Shield: {
+    name: (parent) => {
+      return parent.shield.name;
+    },
+    absorbtion: (parent) => {
+      return parent.shield.absorbtion;
+    },
+    weight: (parent) => {
+      return parent.shield.weight;
     },
   },
 };

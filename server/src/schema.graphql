@@ -37,6 +37,7 @@ type PlayerCharacter {
   heroAbilities: [HeroAbility!]
   equipment: [Equipment!]
   weapons: [Weapon!]
+  shields: [Shield!]
 }
 
 type MagicSchool {
@@ -79,6 +80,12 @@ type Weapon {
   breakValue: Int!
   length: Int!
   range: Int!
+  weight: Int!
+}
+
+type Shield {
+  name: String!
+  absorbtion: Int!
   weight: Int!
 }
 

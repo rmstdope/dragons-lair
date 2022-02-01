@@ -46,6 +46,7 @@ model PlayerCharacter {
   heroAbilities   CharacterHeroAbility[]
   equipment       CharacterEquipment[]
   weapons         CharacterWeapon[]
+  shields         CharacterShield[]
 }
 
 model MagicSchool {
@@ -97,6 +98,14 @@ model Weapon {
   range           Int
   weight          Int
   characterWeapon CharacterWeapon[]
+}
+
+model Shield {
+  id              Int               @id @default(autoincrement())
+  name            String            @unique
+  absorbtion      Int
+  weight          Int
+  characterShield CharacterShield[]
 }
 
 model CharacterMagicSchool {
@@ -169,4 +178,13 @@ model CharacterWeapon {
   weaponId    Int
 
   @@id([characterId, weaponId])
+}
+
+model CharacterShield {
+  character   PlayerCharacter @relation(fields: [characterId], references: [id])
+  characterId Int
+  shield      Shield          @relation(fields: [shieldId], references: [id])
+  shieldId    Int
+
+  @@id([characterId, shieldId])
 }

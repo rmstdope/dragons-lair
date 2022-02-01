@@ -4,6 +4,7 @@ const util = require("util");
 const prisma = new PrismaClient();
 
 async function main() {
+  await prisma.characterShield.deleteMany({});
   await prisma.characterWeapon.deleteMany({});
   await prisma.characterEquipment.deleteMany({});
   await prisma.characterHeroAbility.deleteMany({});
@@ -17,6 +18,7 @@ async function main() {
   await prisma.heroAbility.deleteMany({});
   await prisma.equipment.deleteMany({});
   await prisma.weapon.deleteMany({});
+  await prisma.shield.deleteMany({});
   await prisma.playerCharacter.deleteMany({});
   await prisma.magicSchool.deleteMany({});
 
@@ -56,6 +58,14 @@ async function main() {
       length: 2,
       range: 0,
       weight: 5,
+    },
+  });
+
+  await prisma.shield.create({
+    data: {
+      name: "Liten sköld",
+      absorbtion: 8,
+      weight: 3,
     },
   });
 
@@ -206,6 +216,13 @@ async function main() {
           },
         ],
       },
+      shields: {
+        create: [
+          {
+            shield: { connect: { name: "Liten sköld" } },
+          },
+        ],
+      },
     },
   });
 
@@ -218,6 +235,7 @@ async function main() {
       heroAbilities: { include: { heroAbility: true } },
       equipment: { include: { equipment: true } },
       weapons: { include: { weapon: true } },
+      shields: { include: { shield: true } },
     },
   });
   console.log(
