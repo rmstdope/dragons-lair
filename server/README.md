@@ -1,6 +1,6 @@
 # The Server
 
-This project uses nodejs, graphql, apollo and prism to create a simple backend that serves the frontend.
+This project uses nodejs, graphql, apollo and prisma to create a simple backend that serves the frontend.
 
 ## Available Scripts
 
