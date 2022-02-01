@@ -1,15 +1,10 @@
-# A web visualization of a character sheet for the Swedish 1980s RPG "Drakar och Demoner Export"
-
-# Why
-
-- I wanted to lear the ropes of TypeScript, React and MUI and needed a project.
-- My oldest son has just started to get interest in my old RPGs from the 80s.
+# The Client
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
-In the project directory, you can run:
+You can run:
 
 ### `npm start`
 
