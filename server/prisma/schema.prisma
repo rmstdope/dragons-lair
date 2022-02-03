@@ -13,7 +13,9 @@ datasource db {
 model PlayerCharacter {
   id              Int                    @id @default(autoincrement())
   name            String
+  image           String
   race            String
+  occupation      String
   gender          String
   age             Int
   strength        Int

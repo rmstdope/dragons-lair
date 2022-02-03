@@ -1,18 +1,19 @@
 import { Avatar, AppBar, Grid, Toolbar, Typography } from "@mui/material";
 import * as React from "react";
+import { Character } from "../queries/getPlayerCharacter";
 
 interface Properties {
-  image: string;
-  name: string;
+  character: Character;
 }
+
 export default class PlayerHeader extends React.Component<Properties> {
   render() {
     return (
       <AppBar position="static" style={{ padding: "10px" }}>
         <Toolbar>
           <Avatar
-            alt={this.props.name}
-            src={this.props.image}
+            alt={this.props.character.name}
+            src={this.props.character.image}
             sx={{ width: 80, height: 80 }}
           />
           <Grid container direction="column" style={{ paddingLeft: "10px" }}>
@@ -25,7 +26,7 @@ export default class PlayerHeader extends React.Component<Properties> {
                   fontFamily: "Monospace",
                 }}
               >
-                {this.props.name}
+                {this.props.character.name}
               </Typography>
             </Grid>
             <Grid item>
@@ -39,7 +40,8 @@ export default class PlayerHeader extends React.Component<Properties> {
                   textTransform: "uppercase",
                 }}
               >
-                Människa (Man), 56 år
+                {this.props.character.race} ({this.props.character.gender}),{" "}
+                {this.props.character.age} år
               </Typography>
             </Grid>
             <Grid item>
@@ -51,7 +53,7 @@ export default class PlayerHeader extends React.Component<Properties> {
                   textTransform: "uppercase",
                 }}
               >
-                Trollkarl
+                {this.props.character.occupation}
               </Typography>
             </Grid>
           </Grid>

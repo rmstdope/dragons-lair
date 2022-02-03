@@ -123,8 +123,11 @@ async function main() {
     data: {
       id: 1,
       name: "Noogal Vindspinnare",
+      image:
+        "https://assets.dicebreaker.com/0-dungeons-and-dragons-wizard-5e-guide.png/BROK/thumbnail/1200x1200/quality/100/0-dungeons-and-dragons-wizard-5e-guide.png",
       gender: "Man",
       race: "Människa",
+      occupation: "Trollkarl",
       age: 56,
       strength: 10,
       physique: 12,
@@ -139,8 +142,8 @@ async function main() {
       movement: "L10",
       socialPosition: "Ja",
       homeTown: "Triclive",
-      currentPsy: 18,
-      currentHp: 15,
+      currentPsy: 12,
+      currentHp: 9,
       goldCarried: 20,
       goldInStorage: 30,
       silverCarried: 40,

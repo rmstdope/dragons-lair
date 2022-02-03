@@ -4,9 +4,11 @@
 type PlayerCharacter {
   id: ID!
   name: String!
+  image: String!
   race: String!
   gender: String!
   age: Int!
+  occupation: String!
   strength: Int!
   physique: Int!
   size: Int!

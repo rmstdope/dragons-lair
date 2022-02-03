@@ -52,9 +52,11 @@ export class PlayerTable extends React.Component<PlayerTableProps> {
             <TableRow>
               {this.props.Data[0].map((item, index) => {
                 return index === 0 ? (
-                  <PlayerTableHeaderCell>{item}</PlayerTableHeaderCell>
+                  <PlayerTableHeaderCell key={item}>
+                    {item}
+                  </PlayerTableHeaderCell>
                 ) : (
-                  <PlayerTableHeaderCell align="center">
+                  <PlayerTableHeaderCell key={item} align="center">
                     {item}
                   </PlayerTableHeaderCell>
                 );
@@ -70,9 +72,11 @@ export class PlayerTable extends React.Component<PlayerTableProps> {
                 >
                   {row.map((value, index) => {
                     return index === 0 ? (
-                      <PlayerTableCell>{value}</PlayerTableCell>
+                      <PlayerTableCell key={index}>{value}</PlayerTableCell>
                     ) : (
-                      <PlayerTableCell align="center">{value}</PlayerTableCell>
+                      <PlayerTableCell key={index} align="center">
+                        {value}
+                      </PlayerTableCell>
                     );
                   })}
                 </TableRow>
